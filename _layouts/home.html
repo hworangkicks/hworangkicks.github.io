@@ -51,7 +51,7 @@ layout: default
 	                post.style.display = 'none';
 	            }
 	            else if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
-	            	post.style.display = 'none';
+	            	post.style.display = 'none !important';
 	            }
 	            else {
 	            	posted++;
@@ -62,9 +62,9 @@ layout: default
         if (posted == 0) {
         	const message = document.createElement('p');
         	message.style.marginTop = '50px';
-        	message.textContent = 'No active listings right now';
-        	if (document.title == "upcoming - drinkcheap") {
-        		message.textContent = 'No upcoming listings right now. Please check the <a href="upcoming.html">upcoming</a> section. Thanks!'
+        	message.textContent = 'No upcoming listings right now';
+        	if (document.title == "drinkcheap - drinkcheap") {
+        		message.textContent = 'No active listings today. Please check the <a href="upcoming.html">upcoming</a> section. Thanks!'
         	}
 
         	message.style.color = '#5B5BFF'; // Optional: style the message
