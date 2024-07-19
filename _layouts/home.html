@@ -46,10 +46,6 @@ layout: default
             const postDay = post.getAttribute('data-day');
             const recurring = post.getAttribute('data-recurring')
 
-            console.log(collectionTitle);
-            console.log(recurring);
-            console.log(postDay);
-
             if (recurring == "true") {
 	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay) {
 	                post.style.display = 'none';
