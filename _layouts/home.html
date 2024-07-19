@@ -4,6 +4,34 @@ layout: default
 
 {% include site-header.html %}
 
+<script>
+    function updateDateTime() {
+        const now = new Date();
+
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Add leading zero
+        const day = String(now.getDate()).padStart(2, '0'); // Add leading zero
+        const hours = String(now.getHours()).padStart(2, '0'); // Add leading zero
+        const minutes = String(now.getMinutes()).padStart(2, '0'); // Add leading zero
+        const seconds = String(now.getSeconds()).padStart(2, '0'); // Add leading zero
+
+        const dayOfWeek = now.getDay(); // 0 (Sunday) to 6 (Saturday)
+        const dayType = (dayOfWeek === 0 || dayOfWeek === 6) ? 'Weekend' : 'Weekday';
+
+        return {
+	        date: `${year}-${month}-${day}`,
+	        time: `${hours}:${minutes}:${seconds}`,
+	        day: `${dayType}`
+    	};       
+    }
+
+    // Update the date and time every second
+    setInterval(updateDateTime, 1000);
+
+    // Initial call to display immediately
+    updateDateTime();
+</script>
+
 <main class="main  container">
 
 	<div class="content">
