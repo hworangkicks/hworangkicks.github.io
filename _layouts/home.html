@@ -37,7 +37,7 @@ layout: default
         return days[now.getDay()];
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
+    function filterPosts() {
         const currentDay = getCurrentDay();
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.querySelector('article[title]').getAttribute('title');
@@ -60,7 +60,10 @@ layout: default
 	            }
 	         }
         });
-    });
+    };
+
+    document.addEventListener("DOMContentLoaded", filterPosts);
+    window.addEventListener("popstate", filterPosts);
 </script>
 
 {% include site-footer.html %}
