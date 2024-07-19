@@ -2,11 +2,12 @@
 title: Madhatter Pub
 recurring: true
 day: "Thursday"
-start: "15:00"
-end: "18:00"
+start: "15:00:00"
+end: "18:00:00"
 ---
 
 Every Thursday. 3pm to 6pm. Beer basket specials.
+1240 Crescent St, Montreal, Quebec H3G 2A9
 
 <!-- more -->
 

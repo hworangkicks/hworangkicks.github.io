@@ -2,11 +2,12 @@
 title: Moose Bawr
 recurring: true
 day: "Monday"
-start: "17:00"
-end: "19:00"
+start: "17:00:00"
+end: "19:00:00"
 ---
 
 Every Monday. 5pm to 7pm. Half off on cocktails.
+1817 Saint-Catherine St W, Montreal, Quebec H3H 1M2
 
 <!-- more -->
 

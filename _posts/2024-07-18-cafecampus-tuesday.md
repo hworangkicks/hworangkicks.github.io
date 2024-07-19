@@ -2,8 +2,8 @@
 title: Café Campus
 recurring: true
 day: "Tuesday"
-start: "10:00"
-end: "3:00"
+start: "10:00:00"
+end: "3:00:00"
 ---
 
 Every Tuesday. 10pm to 3am. Retro Night. 7$ pitchers, 3$ shots.

@@ -17,7 +17,7 @@ layout: default
 
     <ul class="list  list--posts">
     {% for page in site.posts limit: 10 %}
-      <li class="item  item--post" data-day="{{ page.day }}" data-title="{{ page.title }}">
+      <li class="item  item--post" data-day="{{ page.day }}" data-title="{{ page.title }}" data-recurring="{{ page.recurring }}">
         <article class="article  article--post  typeset">
 
           <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
@@ -41,12 +41,15 @@ layout: default
         const currentDay = getCurrentDay();
         const posts = document.querySelectorAll('.item--post');
         const pageTitle = post.getAttribute('data-title');
+        const recurring = post.getAttribute('data-recurring')
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
-            if (pageTitle === "active now" && postDay !== currentDay) {
-                post.style.display = 'none';
-            }
+            if (recurring == "true") {
+	            if (pageTitle === "active now" && postDay !== currentDay) {
+	                post.style.display = 'none';
+	            }
+	         }
         });
     });
 </script>
