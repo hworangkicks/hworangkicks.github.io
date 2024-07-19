@@ -1,5 +1,5 @@
 ---
-title: Moose Bar
+title: Moose Bawr
 recurring: true
 time: "Every Monday. 5pm to 7pm"
 ---
