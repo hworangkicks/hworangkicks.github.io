@@ -17,7 +17,7 @@ layout: default
 
     <ul class="list  list--posts">
     {% for page in site.posts limit: 10 %}
-      <li class="item  item--post" data-day="{{ page.day }}">
+      <li class="item  item--post" data-day="{{ page.day }}" data-title="{{ page.title }}">
         <article class="article  article--post  typeset">
 
           <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
@@ -40,10 +40,11 @@ layout: default
     document.addEventListener("DOMContentLoaded", function() {
         const currentDay = getCurrentDay();
         const posts = document.querySelectorAll('.item--post');
+        const pageTitle = post.getAttribute('data-title');
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
-            if (postTitle === "active now" && postDay !== currentDay) {
+            if (pageTitle === "active now" && postDay !== currentDay) {
                 post.style.display = 'none';
             }
         });
