@@ -8,7 +8,7 @@ layout: default
 
 	<div class="content">
 
-    <article class="article  article--page  typeset">
+    <article class="article  article--page  typeset" title="{{ collectiondata.title }}">
 
 			{% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
 			<h1>drinkcheap</h1>
@@ -17,7 +17,7 @@ layout: default
 
     <ul class="list  list--posts">
     {% for page in site.posts limit: 10 %}
-      <li class="item  item--post" data-day="{{ page.day }}" data-title="{{ page.title }}" data-recurring="{{ page.recurring }}">
+      <li class="item  item--post" data-day="{{ page.day }}" data-recurring="{{ page.recurring }}">
         <article class="article  article--post  typeset">
 
           <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
@@ -40,21 +40,22 @@ layout: default
     document.addEventListener("DOMContentLoaded", function() {
         const currentDay = getCurrentDay();
         const posts = document.querySelectorAll('.item--post');
+        const collectionTitle = document.querySelector('article[title]').getAttribute('title');
+
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
             const recurring = post.getAttribute('data-recurring')
-            const pageTitle = post.getAttribute('data-title');
 
-            console.log(pageTitle);
+            console.log(collectionTitle);
             console.log(recurring);
             console.log(postDay);
 
             if (recurring == "true") {
-	            if (pageTitle === "drinkcheap" && postDay !== currentDay) {
+	            if (collectionTitle === "drinkcheap" && postDay !== currentDay) {
 	                post.style.display = 'none';
 	            }
-	            if (pageTitle == "upcoming" && postDay == currentDay) {
+	            if (collectionTitle == "upcoming" && postDay == currentDay) {
 	            	post.style.display = 'none';
 	            }
 	         }
