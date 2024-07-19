@@ -6,7 +6,7 @@ start: "15:00:00"
 end: "18:00:00"
 ---
 
-Every Thursday. 3pm to 6pm. Beer basket specials.
+Every Thursday. 3pm to 6pm. Beer basket specials.<br>
 1240 Crescent St, Montreal, Quebec H3G 2A9
 
 <!-- more -->
