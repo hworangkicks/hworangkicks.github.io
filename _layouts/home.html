@@ -8,7 +8,7 @@ layout: default
 
 	<div class="content">
 
-    <article class="article  article--page  typeset" title="{{ collectiondata.title }}">
+    <article class="article  article--page  typeset">
 
 			{% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
 			<h1>drinkcheap</h1>
@@ -40,9 +40,7 @@ layout: default
     function filterPosts() {
         const currentDay = getCurrentDay();
         const posts = document.querySelectorAll('.item--post');
-        const collectionTitle = document.querySelector('.article--page').getAttribute('title');
-        console.log(collectionTitle)
-        console.log(document.title);
+        const collectionTitle = document.title;
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
@@ -53,7 +51,7 @@ layout: default
             console.log(postDay);
 
             if (recurring == "true") {
-	            if (collectionTitle === "drinkcheap" && postDay !== currentDay) {
+	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay) {
 	                post.style.display = 'none';
 	            }
 	            if (collectionTitle == "upcoming" && postDay == currentDay) {
