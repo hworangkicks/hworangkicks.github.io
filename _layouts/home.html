@@ -43,7 +43,7 @@ layout: default
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
-            if (postDay !== currentDay) {
+            if (postTitle === "active now" && postDay !== currentDay) {
                 post.style.display = 'none';
             }
         });
