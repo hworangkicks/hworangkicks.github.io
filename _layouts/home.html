@@ -43,14 +43,13 @@ layout: default
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
             const recurring = post.getAttribute('data-recurring')
-            console.log(collectionTitle);
-            console.log(postDay == currentDay);
 
             if (recurring == "true") {
 	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay) {
 	                post.style.display = 'none';
 	            }
 	            else if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
+                    console.log("ENTERS IF");
 	            	post.style.display = 'none !important';
 	            }
 	            else {
