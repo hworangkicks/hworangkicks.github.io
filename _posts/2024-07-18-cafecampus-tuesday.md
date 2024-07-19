@@ -6,7 +6,7 @@ start: "10:00:00"
 end: "3:00:00"
 ---
 
-Every Tuesday. 10pm to 3am. Retro Night. 7$ pitchers, 3$ shots.
+Every Tuesday. 10pm to 3am. Retro Night. 7$ pitchers, 3$ shots.<br>
 57 Rue Prince-Arthur E, Montréal, QC H2X 1B4
 
 <!-- more -->
