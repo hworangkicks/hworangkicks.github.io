@@ -13,10 +13,6 @@ layout: default
 			{% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
 			<h1>drinkcheap</h1>
 
-			<p>Current time (at build): {{ site.time | date: "%Y-%m-%d %H:%M %Z" }}</p>
-
-			{{ collectiondata.description | markdownify }}
-
     </article>
 
     {% include post-list.html %}
