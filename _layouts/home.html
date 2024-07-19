@@ -54,6 +54,9 @@ layout: default
 	            if (pageTitle === "drinkcheap" && postDay !== currentDay) {
 	                post.style.display = 'none';
 	            }
+	            if (pageTitle == "upcoming" && postDay == currentDay) {
+	            	post.style.display = 'none';
+	            }
 	         }
         });
     });
