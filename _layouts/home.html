@@ -13,7 +13,32 @@ layout: default
 			{% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
 			<h1>drinkcheap</h1>
 
-			<p>Current Date: {{ site.time | date: "%Y-%m-%d" }}</p>
+			<p id="current-date"></p>
+			<p id="current-time"></p>
+			<p id="current-day"></p>
+
+			<script>
+			  function updateDateTime() {
+			    var now = new Date();
+			    
+			    var options = { year: 'numeric', month: 'long', day: 'numeric' };
+			    var date = now.toLocaleDateString(undefined, options);
+			    
+			    var timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+			    var time = now.toLocaleTimeString(undefined, timeOptions);
+			    
+			    var dayOptions = { weekday: 'long' };
+			    var day = now.toLocaleDateString(undefined, dayOptions);
+			    
+			    document.getElementById('current-date').textContent = 'Current Date: ' + date;
+			    document.getElementById('current-time').textContent = 'Current Time: ' + time;
+			    document.getElementById('current-day').textContent = 'Day: ' + day;
+			  }
+
+			  setInterval(updateDateTime, 1000);
+			  updateDateTime(); // Initial call to set values immediately
+			</script>
+
 
 			{{ collectiondata.description | markdownify }}
 
