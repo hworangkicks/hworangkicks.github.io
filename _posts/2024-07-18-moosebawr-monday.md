@@ -1,7 +1,9 @@
 ---
 title: Moose Bawr
 recurring: true
-time: "Every Monday. 5pm to 7pm"
+day: "Monday"
+start: "17:00"
+end: "19:00"
 ---
 
 Every Monday. 5pm to 7pm. Half off on cocktails.

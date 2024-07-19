@@ -1,7 +1,9 @@
 ---
 title: Madhatter Pub
 recurring: true
-time: "Every Thursday. 3pm to 6pm"
+day: "Thursday"
+start: "15:00"
+end: "18:00"
 ---
 
 Every Thursday. 3pm to 6pm. Beer basket specials.
