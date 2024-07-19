@@ -41,6 +41,7 @@ layout: default
         const currentDay = getCurrentDay();
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.querySelector('.article--page').getAttribute('title');
+        console.log(collectionTitle)
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
