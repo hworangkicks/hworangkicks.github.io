@@ -62,8 +62,13 @@ layout: default
 
         if (posted == 0) {
         	const message = document.createElement('p');
+        	message.style.marginTop = '50px';
         	message.textContent = 'No active listings right now';
-        	message.style.color = 'red'; // Optional: style the message
+        	if (document.title == "upcoming - drinkcheap") {
+        		message.textContent = 'No upcoming listings right now';
+        	}
+
+        	message.style.color = '#5B5BFF'; // Optional: style the message
 
 	        // Insert the message into the DOM
 	        const contentDiv = document.querySelector('.content');
