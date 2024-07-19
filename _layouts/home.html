@@ -32,13 +32,14 @@ layout: default
 
 <script>
     function filterPosts() {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
         const list = document.querySelector('.list.list--posts');
         const items = Array.from(list.getElementsByTagName('li'));
-        items.sort((a, b) => a.getAttribute('data-day').localeCompare(b.getAttribute('data-day')));
+        items.sort((a, b) => days.indexOf(a.getAttribute('data-day')).localeCompare(days.indexOf(b.getAttribute('data-day')));
         list.innerHTML = '';
         items.forEach(item => list.appendChild(item));
 
-        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const now = new Date();
 
         const currentDay = days[now.getDay()];
