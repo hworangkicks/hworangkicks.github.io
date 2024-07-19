@@ -42,6 +42,7 @@ layout: default
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.querySelector('.article--page').getAttribute('title');
         console.log(collectionTitle)
+        console.log(document.title);
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
