@@ -31,63 +31,55 @@ layout: default
 </main>
 
 <script>
-    function getDayIndex(day) {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    return days.indexOf(day);
-}
-
-function filterPosts() {
-    const currentDay = getCurrentDay();
-    const posts = Array.from(document.querySelectorAll('.item--post'));
-    const collectionTitle = document.title;
-    let posted = 0;
-
-    // Sort posts by day of the week
-    posts.sort((a, b) => {
-        const dayA = a.getAttribute('data-day');
-        const dayB = b.getAttribute('data-day');
-        return getDayIndex(dayA) - getDayIndex(dayB);
-    });
-
-    // Clear the list before appending sorted posts
-    const list = document.querySelector('.list--posts');
-    list.innerHTML = '';
-
-    posts.forEach(post => {
-        const postDay = post.getAttribute('data-day');
-        const recurring = post.getAttribute('data-recurring');
-
-        if (recurring === "true") {
-            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay) {
-                post.style.display = 'none';
-            } else if (collectionTitle === "upcoming - drinkcheap" && postDay === currentDay) {
-                post.style.display = 'none';
-            } else {
-                posted++;
-                list.appendChild(post); // Append the sorted post to the list
-            }
-        }
-    });
-
-    if (posted === 0) {
-        const message = document.createElement('p');
-        message.style.marginTop = '50px';
-        message.textContent = 'No active listings right now';
-        if (document.title === "upcoming - drinkcheap") {
-            message.textContent = 'No upcoming listings right now. Please check the <a href="upcoming.html">upcoming</a> section. Thanks!';
-        }
-
-        message.style.color = '#5B5BFF'; // Optional: style the message
-
-        // Insert the message into the DOM
-        const contentDiv = document.querySelector('.content');
-        contentDiv.appendChild(message);
+    function getCurrentDay() {
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const now = new Date();
+        return days[now.getDay()];
     }
-}
 
-document.addEventListener("DOMContentLoaded", filterPosts);
-window.addEventListener("popstate", filterPosts);
-window.addEventListener("hashchange", filterPosts);
+    function filterPosts() {
+        const currentDay = getCurrentDay();
+        const posts = document.querySelectorAll('.item--post');
+        const collectionTitle = document.title;
+        var posted = 0;
+
+        posts.forEach(post => {
+            const postDay = post.getAttribute('data-day');
+            const recurring = post.getAttribute('data-recurring')
+
+            if (recurring == "true") {
+	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay) {
+	                post.style.display = 'none';
+	            }
+	            else if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
+	            	post.style.display = 'none';
+	            }
+	            else {
+	            	posted++;
+	            }
+	         }
+        });
+
+        if (posted == 0) {
+        	const message = document.createElement('p');
+        	message.style.marginTop = '50px';
+        	message.textContent = 'No active listings right now';
+        	if (document.title == "upcoming - drinkcheap") {
+        		message.textContent = 'No upcoming listings right now. Please check the <a href="upcoming.html">upcoming</a> section. Thanks!'
+        	}
+
+        	message.style.color = '#5B5BFF'; // Optional: style the message
+
+	        // Insert the message into the DOM
+	        const contentDiv = document.querySelector('.content');
+	        contentDiv.appendChild(message);
+
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", filterPosts);
+    window.addEventListener("popstate", filterPosts);
+    window.addEventListener("hashchange", filterPosts);
 </script>
 
 {% include site-footer.html %}
