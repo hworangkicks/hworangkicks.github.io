@@ -6,7 +6,8 @@ start: "18:00:00"
 end: "23:00:00"
 ---
 
-Every Friday. 6pm to 11pm. Happy Hour. 50% off on all cocktails.<br>
+Every Friday. 6pm to 11pm.<br>
+Happy Hour. 50% off on all cocktails.<br>
 1680 Rue Saint-Denis, Montréal, QC H2X 3K4
 
 <!-- more -->

@@ -6,7 +6,8 @@ start: "15:00:00"
 end: "22:00:00"
 ---
 
-Every Sunday. 3pm to 10pm. 5$ mimosas.<br>
+Every Sunday. 3pm to 10pm.<br>
+5$ mimosas.<br>
 408 Rue Saint-François-Xavier, Montréal, QC H2Y 2S9
 
 <!-- more -->

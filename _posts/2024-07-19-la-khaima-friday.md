@@ -6,7 +6,8 @@ start: "18:00:00"
 end: "23:00:00"
 ---
 
-Every Friday. 6pm to 11pm. 5$ tapas with any drink.<br>
+Every Friday. 6pm to 11pm.<br>
+5$ tapas with any drink.<br>
 106 Rue de la Commune E, Montréal, QC H2Y 1J1
 
 <!-- more -->

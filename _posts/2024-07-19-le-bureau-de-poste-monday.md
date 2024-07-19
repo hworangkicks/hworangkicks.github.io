@@ -6,7 +6,8 @@ start: "17:00:00"
 end: "22:00:00"
 ---
 
-Every Monday. 5pm to 10pm. 6$ burgers with any drink purchase.<br>
+Every Monday. 5pm to 10pm.<br>
+6$ burgers with any drink purchase.<br>
 1000 Rue du Square-Victoria, Montréal, QC H2Z 2B7
 
 <!-- more -->

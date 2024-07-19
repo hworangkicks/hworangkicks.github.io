@@ -6,7 +6,8 @@ start: "17:00:00"
 end: "19:00:00"
 ---
 
-Every Monday. 5pm to 7pm. Half off on cocktails.<br>
+Every Monday. 5pm to 7pm.<br>
+Half off on cocktails.<br>
 1817 Saint-Catherine St W, Montreal, Quebec H3H 1M2
 
 <!-- more -->

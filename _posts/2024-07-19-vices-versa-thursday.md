@@ -6,7 +6,8 @@ start: "16:00:00"
 end: "22:00:00"
 ---
 
-Every Thursday. 4pm to 10pm. 20% off on local craft beer.<br>
+Every Thursday. 4pm to 10pm.<br>
+20% off on local craft beer.<br>
 6628 Rue Jeannette, Montréal, QC H4E 3N5
 
 <!-- more -->

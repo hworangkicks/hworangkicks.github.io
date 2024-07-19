@@ -6,7 +6,8 @@ start: "20:00:00"
 end: "03:00:00"
 ---
 
-Every Saturday. 8pm to 3am. 25% off on all craft cocktails.<br>
+Every Saturday. 8pm to 3am.<br>
+25% off on all craft cocktails.<br>
 1351 Rue Ontario E, Montréal, QC H2L 1S1
 
 <!-- more -->

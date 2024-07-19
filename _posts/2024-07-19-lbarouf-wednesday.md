@@ -6,7 +6,8 @@ start: "19:00:00"
 end: "01:00:00"
 ---
 
-Every Wednesday. 7pm to 1am. 5$ pints of local craft beer.<br>
+Every Wednesday. 7pm to 1am.<br>
+5$ pints of local craft beer.<br>
 1276 Rue du Fort, Montréal, QC H3H 2A9
 
 <!-- more -->

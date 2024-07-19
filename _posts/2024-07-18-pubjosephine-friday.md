@@ -6,7 +6,8 @@ start: "18:00:00"
 end: "23:00:00"
 ---
 
-Every Friday. 6pm to 11pm. Happy Hour. 50% off on all appetizers, $5 beers.<br>
+Every Friday. 6pm to 11pm.<br>
+Happy Hour. 50% off on all appetizers, $5 beers.<br>
 1250 Rue de la Montagne, Montréal, QC H3G 1Z1
 
 <!-- more -->

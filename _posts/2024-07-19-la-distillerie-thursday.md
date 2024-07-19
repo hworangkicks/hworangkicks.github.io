@@ -6,7 +6,8 @@ start: "17:00:00"
 end: "23:00:00"
 ---
 
-Every Thursday. 5pm to 11pm. 2-for-1 on all cocktails.<br>
+Every Thursday. 5pm to 11pm.<br>
+2-for-1 on all cocktails.<br>
 1290 Avenue du Mont-Royal E, Montréal, QC H2J 1Y4
 
 <!-- more -->
