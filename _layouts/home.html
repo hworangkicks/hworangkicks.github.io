@@ -39,9 +39,9 @@ layout: default
 
     function filterPosts() {
         const currentDay = getCurrentDay();
+        console.log(currentDay);
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.querySelector('article[title]').getAttribute('title');
-
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
