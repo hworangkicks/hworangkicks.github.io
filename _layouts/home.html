@@ -41,6 +41,7 @@ layout: default
         const currentDay = getCurrentDay();
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.title;
+        var posted = 0;
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
@@ -50,11 +51,25 @@ layout: default
 	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay) {
 	                post.style.display = 'none';
 	            }
-	            if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
+	            else if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
 	            	post.style.display = 'none';
+	            }
+	            else {
+	            	posted++;
 	            }
 	         }
         });
+
+        if (posted == 0) {
+        	const message = document.createElement('p');
+        	message.textContent = 'No active listings right now';
+        	message.style.color = 'red'; // Optional: style the message
+
+	        // Insert the message into the DOM
+	        const contentDiv = document.querySelector('.content');
+	        contentDiv.appendChild(message);
+
+        }
     };
 
     document.addEventListener("DOMContentLoaded", filterPosts);
