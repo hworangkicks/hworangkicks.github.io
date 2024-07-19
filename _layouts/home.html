@@ -63,6 +63,7 @@ layout: default
     };
 
     document.addEventListener("DOMContentLoaded", filterPosts);
+    window.addEventListener("popstate", filterPosts);
     window.addEventListener("hashchange", filterPosts);
 </script>
 
