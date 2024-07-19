@@ -2,22 +2,3 @@
 layout: home
 collectionpage: posts
 ---
-
-<p>Build date and time: {{ site.time | date: "%Y-%m-%d %H:%M:%S" }}</p>
-<p>Current date and time: <span id="currentDateTime"></span></p>
-
-<script>
-function updateDateTime() {
-    var now = new Date();
-    var options = { 
-        weekday: 'long', year: 'numeric', month: 'long', 
-        day: 'numeric', hour: '2-digit', minute: '2-digit', 
-        second: '2-digit', hour12: false, timeZoneName: 'short'
-    };
-    var dateTimeString = now.toLocaleDateString('en-CA', options);
-    document.getElementById('currentDateTime').innerText = dateTimeString;
-}
-
-setInterval(updateDateTime, 1000); // Update every second
-updateDateTime(); // Initial call
-</script>
