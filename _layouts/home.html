@@ -32,17 +32,32 @@ layout: default
 
 <script>
     function filterPosts() {
+        function getDistance(day1, day2) {
+            const index1 = days.indexOf(day1);
+            const index2 = days.indexOf(day2);
+            return (index2 - index1 + 7) % 7; // Calculate distance considering wrap-around
+        }
+
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const now = new Date();
+        const currentDay = days[now.getDay()];
 
         const list = document.querySelector('.list.list--posts');
         const items = Array.from(list.getElementsByTagName('li'));
-        items.sort((a, b) => days.indexOf(a.getAttribute('data-day')).localeCompare(days.indexOf(b.getAttribute('data-day')));
+
+        items.sort((a, b) => {
+          const dayA = a.getAttribute('data-day');
+          const dayB = b.getAttribute('data-day');
+          
+          const distanceA = getDistance(currentDay, dayA);
+          const distanceB = getDistance(currentDay, dayB);
+          
+          return distanceA - distanceB;
+      });
+
         list.innerHTML = '';
         items.forEach(item => list.appendChild(item));
 
-        const now = new Date();
-
-        const currentDay = days[now.getDay()];
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.title;
         var posted = 0;
