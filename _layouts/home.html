@@ -170,20 +170,6 @@ layout: default
     document.addEventListener("DOMContentLoaded", filterPosts);
     window.addEventListener("popstate", filterPosts);
     window.addEventListener("hashchange", filterPosts);
-
-    const elements = document.querySelectorAll('.happening-now');
-
-    elements.forEach((element) => {
-      // Add touchstart event listener
-      element.addEventListener('touchstart', () => {
-        element.classList.add('happening-now');
-      });
-
-      element.addEventListener('touchend', () => {
-        // Remove touch effect
-        element.classList.remove('happening-now');
-      });
-    });
 </script>
 
 <style>
@@ -208,8 +194,7 @@ layout: default
         white-space: nowrap;
     }
 
-    .happening-now:hover::after,
-    .happening-now.active::after {
+    .happening-now:hover, .happening-now:active{
         opacity: 1;
         transform: translateX(-50%) translateY(-5px);
     }
