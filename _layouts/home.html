@@ -58,6 +58,8 @@ layout: default
             // if it goes to next day
             if (postStart > postEnd) {
                 postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
+                console.log(postStartDay);
+                console.log(postEndDay);
             }
 
             // get distance from reference - Sunday 00:00:00
@@ -77,8 +79,6 @@ layout: default
             console.log(distanceNow);
             console.log(distancePostStart);
             console.log(distancePostEnd);
-            console.log(postStartDay);
-            console.log(postEndDay);
 
             // calculate distance from now
             if (happeningNow) {
