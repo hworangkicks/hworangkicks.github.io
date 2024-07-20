@@ -39,9 +39,6 @@ layout: default
 
         // We have current day (eg Sunday) and time (eg 17:45:00)
 
-        const list = document.querySelector('.list.list--posts');
-        const items = Array.from(list.getElementsByTagName('li'));
-
         function timeToMinutes(timeStr) {
                 var [hours, minutes, seconds] = timeStr.split(':').map(Number);
                 return hours * 60 + minutes;
@@ -109,9 +106,12 @@ layout: default
             }
         }
 
+        const list = document.querySelector('.list.list--posts');
+        const items = Array.from(list.getElementsByTagName('li'));
+
         items.sort((a, b) => {
-            distanceFromNow(b) - distanceFromNow(a);
-      });
+            return distanceFromNow(a) - distanceFromNow(b);
+        });
 
         list.innerHTML = '';
         items.forEach(item => list.appendChild(item));
