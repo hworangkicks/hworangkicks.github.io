@@ -129,7 +129,7 @@ layout: default
                         post.style.display = 'none';
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(checkActive(post) || timeToMinutes(getCurrentTimeString()) > timeToMinutes(post.getAttribute('data-end'))) {
+                    if(checkActive(post) || (currentDay == post.getAttribute('data-day') && timeToMinutes(getCurrentTimeString()) > timeToMinutes(post.getAttribute('data-end')))) {
                         post.style.display = 'none';
                     }
                 } else {
