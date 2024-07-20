@@ -125,17 +125,18 @@ layout: default
         posts.forEach(post => {
             var happeningNow = isHappeningNow(post);
             var postTitle = post.getAttribute('data-title');
+            var postDay = post.getAttribute('data-day');
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
-                    if (!happeningNow || titles.has(postTitle)) {
+                    if (postDay != currDay || titles.has(postTitle)) {
                         post.style.display = 'none';
                     } else {
                         titles.add(postTitle);
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(happeningNow || titles.has(postTitle)) {
+                    if(postDay == currDay || titles.has(postTitle)) {
                         post.style.display = 'none';
                     } else {
                         titles.add(postTitle);
