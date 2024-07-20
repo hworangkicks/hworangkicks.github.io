@@ -127,14 +127,16 @@ layout: default
                 if (collectionTitle === "drinkcheap - drinkcheap") {
                     if (!checkActive(post)) {
                         post.style.display = 'none';
+                    } else {
+                    posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
                     if(checkActive(post) || (currentDay == post.getAttribute('data-day') && timeToMinutes(getCurrentTimeString()) > timeToMinutes(post.getAttribute('data-end')))) {
                         post.style.display = 'none';
-                    }
-                } else {
+                    } else {
                     posted++;
-                }
+                    }
+                } 
             }
         });
 
