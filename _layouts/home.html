@@ -179,7 +179,7 @@ layout: default
         display: inline-block;
     }
 
-    .happening-now::hover, .happening-now:active {
+    .happening-now::after {
         content: "happening now";
         position: absolute;
         color: #5b5bff;
@@ -194,10 +194,10 @@ layout: default
         white-space: nowrap;
     }
 
-    /*.happening-now:hover::after, .happening-now:active::after{
+    .happening-now:hover {
         opacity: 1;
         transform: translateX(-50%) translateY(-5px);
-    }*/
+    }
 </style>
 
 {% include site-footer.html %}
