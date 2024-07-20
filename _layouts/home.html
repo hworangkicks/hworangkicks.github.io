@@ -52,6 +52,7 @@ layout: default
             var postStart = post.getAttribute('data-start');
             var postEnd = post.getAttribute('data-end');
             var postEndDay = postStartDay;
+            var postTitle = post.getAttribute('data-title');
             var happeningNow = false;
 
             // if it goes to next day
@@ -71,7 +72,7 @@ layout: default
                 happeningNow = distanceNow >= distancePostStart || distanceNow <= distancePostEnd;
             }
 
-            console.log(post.getAttribute('data-title'));
+            console.log(postTitle);
             console.log(happeningNow);
 
             // calculate distance from now
