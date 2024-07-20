@@ -17,7 +17,7 @@ layout: default
 
     <ul class="list  list--posts">
     {% for page in site.posts %}
-      <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-end="{{ page.end }}" data-recurring="{{ page.recurring }}">
+      <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-end="{{ page.end }}" data-recurring="{{ page.recurring }}" data-title="{{ page.title }}">
         <article class="article  article--post  typeset">
 
           <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
@@ -32,99 +32,55 @@ layout: default
 
 <script>
     function filterPosts() {
-        function getDistance(day1, day2) {
-            const index1 = days.indexOf(day1);
-            const index2 = days.indexOf(day2);
-            return (index2 - index1 + 7) % 7; // Calculate distance considering wrap-around
-        }
-
-        function compareTimes(timeStr1, timeStr2) {
-            let [hours1, minutes1] = timeStr1.split(':').map(Number);
-            let [hours2, minutes2] = timeStr2.split(':').map(Number);
-
-            if (hours1 < hours2 || (hours1 === hours2 && minutes1 < minutes2)) {
-                return -1; // left < right
-            } else if (hours1 > hours2 || (hours1 === hours2 && minutes1 > minutes2)) {
-                return 1; // left > right
-            } else {
-                return 0;
-            }
-        }
-
-        function getCurrentTimeString() {
-          const now = new Date();
-          const hours = String(now.getHours()).padStart(2, '0');
-          const minutes = String(now.getMinutes()).padStart(2, '0');
-          const seconds = String(now.getSeconds()).padStart(2, '0');
-          
-          return `${hours}:${minutes}:${seconds}`;
-      }
-
-        function timeToMinutes(time) {
-            var parts = time.split(':');
-            return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
-        }
-
-        function minutesUntilEvent(post) {
-          const day = post.getAttribute('data-day');
-          const time = post.getAttribute('data-start');
-
-          const eventDateTime = new Date(`${day}T${time}`);
-
-            // Get the current date and time
-            const now = new Date();
-
-            // Calculate the difference in milliseconds
-            const difference = eventDateTime - now;
-
-            // Convert the difference to minutes
-            const minutesUntil = Math.floor(difference / 60000); // 1 minute = 60000 milliseconds
-
-            if (minutesUntil >= 0) {
-                return minutesUntil;
-            }
-            else {
-                return minutesUntil + 7 * 24 * 60;
-            }
-        }
-
-        function checkActive(post) {
-            const postDay = post.getAttribute('data-day');
-            const recurring = post.getAttribute('data-recurring');
-            const postStart = post.getAttribute('data-start');
-            const postEnd = post.getAttribute('data-end');
-
-            const currTime = getCurrentTimeString();
-            var currTimeInMinutes = timeToMinutes(currTime);
-
-            // Convert post start and end times to minutes
-            var postStartInMinutes = timeToMinutes(postStart);
-            var postEndInMinutes = timeToMinutes(postEnd);
-
-            // Check if the event spans across midnight
-            var spansMidnight = postEndInMinutes < postStartInMinutes;
-
-            if (postDay !== currentDay || 
-                (spansMidnight 
-                ? (currTimeInMinutes < postStartInMinutes && currTimeInMinutes > postEndInMinutes) 
-                : (currTimeInMinutes < postStartInMinutes || currTimeInMinutes > postEndInMinutes))) {
-                return false;
-            }
-            return true;
-
-        }
-
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const now = new Date();
         const currentDay = days[now.getDay()];
+        const currTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+
+        // We have current day (eg Sunday) and time (eg 17:45:00)
 
         const list = document.querySelector('.list.list--posts');
         const items = Array.from(list.getElementsByTagName('li'));
 
+        function distanceFromNow(post) {
+            var minutesFromNow = 0;
+
+            var postDay = post.getAttribute('data-day');
+            var postStart = post.getAttribute('data-start');
+            var postEnd = post.getAttribute('data-end');
+
+            var dayDifference = (days.indexOf(postDay) - days.indexOf(currentDay) + 7) % 7;
+            minutesFromNow += dayDifference * 24 * 60;
+
+            function timeToMinutes(timeStr) {
+                var [hours, minutes, seconds] = timeStr.split(':').map(Number);
+                return hours * 60 + minutes + (seconds / 60);
+            }
+
+            var currentTimeMinutes = timeToMinutes(currentTimeStr);
+            var postStartMinutes = timeToMinutes(postStart);
+            var postEndMinutes = timeToMinutes(postEnd);
+
+            var timeDifferenceStart = postStartMinutes - currentTimeMinutes;
+            var timeDifferenceEnd = postEndMinutes - currentTimeMinutes;
+
+            if (timeDifferenceStart > 0) {
+                minutesFromNow += timeDifferenceStart;
+                } else if (timeDifferenceEnd > 0) {
+                    minutesFromNow += timeDifferenceEnd;
+                } else {
+                // Event is already over
+                    minutesFromNow = 7 * 23 * 60 + (currentTimeMinutes - postEndMinutes);
+                 }
+
+            return minutesFromNow;
+        }
+
         items.sort((a, b) => {
-            const minutesA = minutesUntilEvent(a);
-            const minutesB = minutesUntilEvent(b);
-            return minutesA - minutesB;
+            distanceA = distanceFromNow(a);
+            distanceB = distanceFromNow(b);
+
+            return distanceA - distanceB;
       });
 
         list.innerHTML = '';
@@ -137,13 +93,13 @@ layout: default
         posts.forEach(post => {
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
-                    if (!checkActive(post)) {
+                    if () {
                         post.style.display = 'none';
                     } else {
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(checkActive(post)) {
+                    if() {
                         post.style.display = 'none';
                     } else {
                         posted++;
