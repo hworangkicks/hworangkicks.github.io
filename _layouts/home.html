@@ -67,9 +67,9 @@ layout: default
 
             // check if event is happening
             if (distancePostStart <= distancePostEnd) {
-                happeningNow = distanceNow >= distancePostStart && distanceNow <= distancePostEnd;
+                happeningNow = (distanceNow >= distancePostStart && distanceNow <= distancePostEnd);
             } else {
-                happeningNow = distanceNow >= distancePostStart || distanceNow <= distancePostEnd;
+                happeningNow = (distanceNow >= distancePostStart || distanceNow <= distancePostEnd);
             }
 
             console.log(postTitle);
@@ -77,6 +77,8 @@ layout: default
             console.log(distanceNow);
             console.log(distancePostStart);
             console.log(distancePostEnd);
+            console.log(postStartDay);
+            console.log(postEndDay);
 
             // calculate distance from now
             if (happeningNow) {
