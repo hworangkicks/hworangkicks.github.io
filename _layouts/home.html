@@ -176,27 +176,27 @@ layout: default
     .happening-now {
         position: relative;
         cursor: pointer;
+        display: inline-block;
     }
 
     .happening-now::after {
-        content: "Happening now";
+        content: "happening now";
         position: absolute;
-        white-space: nowrap;
-        background-color: #333;
-        color: #fff;
-        padding: 5px;
-        border-radius: 5px;
+        color: #5b5bff;
+        padding: 3px 8px;
+        font-size: 0.5em;
         top: -25px;
         left: 50%;
         transform: translateX(-50%);
         opacity: 0;
-        transition: opacity 0.2s;
+        transition: opacity 0.3s, transform 0.3s;
         pointer-events: none;
-        z-index: 100;
+        white-space: nowrap;
     }
 
     .happening-now:hover::after {
         opacity: 1;
+        transform: translateX(-50%) translateY(-5px);
     }
 </style>
 
