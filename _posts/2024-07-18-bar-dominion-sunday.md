@@ -6,7 +6,7 @@ start: "23:00:00"
 end: "01:00:00"
 ---
 
-Monday to Friday. 11pm to 1am.<br>
+Everyday. 11pm to 1am.<br>
 5$ pints.<br>
 1243 Metcalfe St, Montreal, Quebec H3B 2V5
 
