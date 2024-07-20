@@ -2,7 +2,7 @@
 title: Café Campus
 recurring: true
 day: "Tuesday"
-start: "10:00:00"
+start: "22:00:00"
 end: "3:00:00"
 ---
 
