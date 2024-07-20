@@ -58,6 +58,7 @@ layout: default
             // if it goes to next day
             if (postStart > postEnd) {
                 postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
+                console.log(postTitle);
                 console.log(postStartDay);
                 console.log(postEndDay);
             }
@@ -74,7 +75,6 @@ layout: default
                 happeningNow = (distanceNow >= distancePostStart || distanceNow <= distancePostEnd);
             }
 
-            console.log(postTitle);
             console.log(happeningNow);
             console.log(distanceNow);
             console.log(distancePostStart);
