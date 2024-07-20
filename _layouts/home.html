@@ -65,6 +65,24 @@ layout: default
             return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
         }
 
+        function minutesUntilEvent(post) {
+          const day = post.getAttribute('data-day');
+          const time = post.getAttribute('data-start');
+
+          const eventDateTime = new Date(`${day}T${time}`);
+
+            // Get the current date and time
+            const now = new Date();
+
+            // Calculate the difference in milliseconds
+            const difference = eventDateTime - now;
+
+            // Convert the difference to minutes
+            const minutesUntil = Math.floor(difference / 60000); // 1 minute = 60000 milliseconds
+
+            return minutesUntil;
+        }
+
         function checkActive(post) {
             const postDay = post.getAttribute('data-day');
             const recurring = post.getAttribute('data-recurring');
@@ -105,19 +123,9 @@ layout: default
         const items = Array.from(list.getElementsByTagName('li'));
 
         items.sort((a, b) => {
-          const dayA = a.getAttribute('data-day');
-          const dayB = b.getAttribute('data-day');
-          const timeA = a.getAttribute('data-start');
-          const timeB = b.getAttribute('data-start');
-          
-          const distanceA = getDistance(currentDay, dayA);
-          const distanceB = getDistance(currentDay, dayB);
-
-          if ((distanceA - distanceB) != 0) {
-            return distanceA - distanceB;
-          }
-
-          return compareTimes(timeA, timeB);
+            const minutesA = minutesUntilEvent(a);
+            const minutesB = minutesUntilEvent(b);
+            return minutesA - minutesB;
       });
 
         list.innerHTML = '';
@@ -136,7 +144,7 @@ layout: default
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(checkActive(post) || (currentDay == post.getAttribute('data-day') && timeToMinutes(getCurrentTimeString()) > timeToMinutes(post.getAttribute('data-end')))) {
+                    if(checkActive(post)) {
                         post.style.display = 'none';
                     } else {
                         posted++;
