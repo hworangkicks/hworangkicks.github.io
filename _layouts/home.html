@@ -123,7 +123,7 @@ layout: default
         var posted = 0;
 
         posts.forEach(post => {
-            if (recurring == "true") {
+            if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
                     if (!checkActive(post)) {
                         post.style.display = 'none';
