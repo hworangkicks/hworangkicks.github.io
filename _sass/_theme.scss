@@ -105,9 +105,6 @@ body {
   &--nav {
     display: inline-block;
     margin-left: 1rem;
-    &:first-of-type {
-      margin-left: 0;
-    }
   }
   &--current {
     a {
