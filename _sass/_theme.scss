@@ -75,10 +75,6 @@ body {
   margin: 0 1rem;
 }
 
-.article--post {
-  text-align: center; // Center text in the article
-}
-
 // Main content
 .main {
   @include flexbox;
