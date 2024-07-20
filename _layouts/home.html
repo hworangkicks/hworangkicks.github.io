@@ -47,7 +47,7 @@ layout: default
                 return hours * 60 + minutes;
         }
 
-        function distanceFromNow(post) {
+        function isHappeningNow(post) {
             var postStartDay = post.getAttribute('data-day');
             var postStart = post.getAttribute('data-start');
             var postEnd = post.getAttribute('data-end');
@@ -58,9 +58,6 @@ layout: default
             // if it goes to next day
             if (postStart > postEnd) {
                 postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
-                console.log(postTitle);
-                console.log(postStartDay);
-                console.log(postEndDay);
             }
 
             // get distance from reference - Sunday 00:00:00
@@ -75,10 +72,33 @@ layout: default
                 happeningNow = (distanceNow >= distancePostStart || distanceNow <= distancePostEnd);
             }
 
-            console.log(happeningNow);
-            console.log(distanceNow);
-            console.log(distancePostStart);
-            console.log(distancePostEnd);
+            return happeningNow;
+        }
+
+        function distanceFromNow(post) {
+            var postStartDay = post.getAttribute('data-day');
+            var postStart = post.getAttribute('data-start');
+            var postEnd = post.getAttribute('data-end');
+            var postEndDay = postStartDay;
+            var postTitle = post.getAttribute('data-title');
+            var happeningNow = false;
+
+            // if it goes to next day
+            if (postStart > postEnd) {
+                postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
+            }
+
+            // get distance from reference - Sunday 00:00:00
+            distanceNow = days.indexOf(currDay) * 24 * 60 + timeToMinutes(currTime);
+            distancePostStart = days.indexOf(postStartDay) * 24 * 60 + timeToMinutes(postStart);
+            distancePostEnd = days.indexOf(postEndDay) * 24 * 60 + timeToMinutes(postEnd);
+
+            // check if event is happening
+            if (distancePostStart <= distancePostEnd) {
+                happeningNow = (distanceNow >= distancePostStart && distanceNow <= distancePostEnd);
+            } else {
+                happeningNow = (distanceNow >= distancePostStart || distanceNow <= distancePostEnd);
+            }
 
             // calculate distance from now
             if (happeningNow) {
@@ -112,7 +132,7 @@ layout: default
         var posted = 0;
 
         posts.forEach(post => {
-            var happeningNow = distanceFromNow(post) == -10080;
+            var happeningNow = isHappeningNow(post);
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
