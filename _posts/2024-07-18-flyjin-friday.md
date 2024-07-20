@@ -2,7 +2,7 @@
 title: Flyjin
 recurring: true
 day: "Friday"
-start: "10:00:00"
+start: "22:00:00"
 end: "3:00:00"
 ---
 
