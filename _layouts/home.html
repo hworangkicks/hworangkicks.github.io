@@ -114,6 +114,8 @@ layout: default
         });
 
         list.innerHTML = '';
+        const titles = new Set();
+
         items.forEach(item => list.appendChild(item));
 
         const posts = document.querySelectorAll('.item--post');
@@ -122,18 +124,21 @@ layout: default
 
         posts.forEach(post => {
             var happeningNow = isHappeningNow(post);
+            var postTitle = post.getAttribute('data-title');
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
-                    if (!happeningNow) {
+                    if (!happeningNow || titles.has(postTitle)) {
                         post.style.display = 'none';
                     } else {
+                        titles.add(postTitle);
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(happeningNow) {
+                    if(happeningNow || titles.has(postTitle)) {
                         post.style.display = 'none';
                     } else {
+                        titles.add(postTitle);
                         posted++;
                     }
                 } 
