@@ -170,6 +170,16 @@ layout: default
     document.addEventListener("DOMContentLoaded", filterPosts);
     window.addEventListener("popstate", filterPosts);
     window.addEventListener("hashchange", filterPosts);
+
+    document.addEventListener('DOMContentLoaded', function () {
+    var elements = document.querySelectorAll('.happening-now');
+    
+    elements.forEach(function (element) {
+        element.addEventListener('click', function () {
+            this.classList.toggle('active');
+        });
+    });
+});
 </script>
 
 <style>
@@ -194,7 +204,8 @@ layout: default
         white-space: nowrap;
     }
 
-    .happening-now:hover::after {
+    .happening-now:hover::after,
+    .happening-now.active::after {
         opacity: 1;
         transform: translateX(-50%) translateY(-5px);
     }
