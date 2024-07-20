@@ -183,10 +183,22 @@ layout: default
         }, 1000);
     }
 
+    // Select all .happening-now elements and add event listeners for click and touchstart
     document.querySelectorAll('.happening-now').forEach(function(element) {
-        element.addEventListener('click', activate);
-        element.addEventListener('touchstart', activate);
+        // Prevent touchstart from triggering click
+        let touchStartHandler = function(event) {
+            event.preventDefault();
+            activate(event);
+        };
+        
+        let clickHandler = function(event) {
+            activate(event);
+        };
+
+        element.addEventListener('touchstart', touchStartHandler);
+        element.addEventListener('click', clickHandler);
     });
+
 
 </script>
 
