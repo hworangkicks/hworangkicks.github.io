@@ -61,12 +61,6 @@ layout: default
                 var postEndDay = postStartDay;
             }
 
-            console.log(postTitle);
-            console.log(postStartDay);
-            console.log(postEndDay);
-            console.log(postStart);
-            console.log(postEnd);
-
             // get distance from reference - Sunday 00:00:00
             distanceNow = days.indexOf(currDay) * 24 * 60 + timeToMinutes(currTime);
             distancePostStart = days.indexOf(postStartDay) * 24 * 60 + timeToMinutes(postStart);
@@ -111,20 +105,8 @@ layout: default
             if (happeningNow) {
                 return -10080;
             } else {
-                // past
-                if ((distanceNow > distancePostEnd && distancePostStart <= distancePostEnd) || (distancePostStart > distancePostEnd && distanceNow > distancePostEnd && distanceNow < distancePostStart)) {
-                    return (10080 - distanceNow) + distancePostStart;
-                } else {
-                    //future
-                    if (distanceNow < distancePostStart) {
-                        return (distancePostStart - distanceNow);
-                    }
-                    else {
-                        return (10080 - distanceNow) + distancePostStart;
-                    }
-                }
+                return ((10080 - distanceNow) + distancePostStart) % 10080;
             }
-
         }
 
         items.sort((a, b) => {
