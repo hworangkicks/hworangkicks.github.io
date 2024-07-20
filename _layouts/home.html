@@ -171,28 +171,21 @@ layout: default
     window.addEventListener("popstate", filterPosts);
     window.addEventListener("hashchange", filterPosts);
 
-    document.addEventListener('DOMContentLoaded', function () {
-        var elements = document.querySelectorAll('.happening-now');
+    // Function to handle the activation and deactivation of the label
+    function activate(event) {
+        event.preventDefault();
+        var element = event.currentTarget;
+        element.classList.add('active');
 
-        elements.forEach(function (element) {
-            var timeout;
+        setTimeout(function () {
+            element.classList.remove('active');
+            location.reload(); // Refresh the page after removing the active class
+        }, 1000);
+    }
 
-            function activate() {
-                clearTimeout(timeout);
-                element.classList.add('active');
-                timeout = setTimeout(function () {
-                    element.classList.remove('active');
-                }, 1000);
-            }
-
-            element.addEventListener('click', activate);
-
-            // For mobile devices
-            element.addEventListener('touchstart', function (event) {
-                event.preventDefault(); // Prevents touchstart from firing click
-                activate();
-            });
-        });
+    document.querySelectorAll('.happening-now').forEach(function(element) {
+        element.addEventListener('click', activate);
+        element.addEventListener('touchstart', activate);
     });
 
 </script>
