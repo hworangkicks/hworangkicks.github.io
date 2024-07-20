@@ -141,7 +141,7 @@ layout: default
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(not_active == false || titles.has(postTitle) ) {
+                    if(not_active == false && titles.has(postTitle) ) {
                         post.style.display = 'none';
                     } else {
                         titles.add(postTitle);
