@@ -71,6 +71,10 @@ layout: default
             const postStart = post.getAttribute('data-start');
             const postEnd = post.getAttribute('data-end');
 
+            console.log(postDay);
+            console.log(postStart);
+            console.log(postEnd);
+
             const currTime = getCurrentTimeString();
             var currTimeInMinutes = timeToMinutes(currTime);
 
@@ -85,9 +89,10 @@ layout: default
                 (spansMidnight 
                 ? (currTimeInMinutes < postStartInMinutes && currTimeInMinutes > postEndInMinutes) 
                 : (currTimeInMinutes < postStartInMinutes || currTimeInMinutes > postEndInMinutes))) {
+                console.log(false);
                 return false;
             }
-
+            console.log(true);
             return true;
 
         }
@@ -128,13 +133,13 @@ layout: default
                     if (!checkActive(post)) {
                         post.style.display = 'none';
                     } else {
-                    posted++;
+                        posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
                     if(checkActive(post) || (currentDay == post.getAttribute('data-day') && timeToMinutes(getCurrentTimeString()) > timeToMinutes(post.getAttribute('data-end')))) {
                         post.style.display = 'none';
                     } else {
-                    posted++;
+                        posted++;
                     }
                 } 
             }
