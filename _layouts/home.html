@@ -76,11 +76,16 @@ layout: default
                 return 0;
             } else {
                 // past
-                if (distancePostEnd < distanceNow) {
+                if ((distanceNow > distancePostEnd && distancePostStart <= distancePostEnd) || (distancePostStart > distancePostEnd && distanceNow > distancePostEnd && distanceNow < distancePostStart)) {
                     return (10080 - distanceNow) + distancePostStart;
                 } else {
                     //future
-                    return (distancePostStart - distanceNow);
+                    if (distanceNow < distancePostStart) {
+                        return (distancePostStart - distanceNow);
+                    }
+                    else {
+                        return (10080 - distanceNow) + distancePostStart;
+                    }
                 }
             }
 
