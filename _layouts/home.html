@@ -57,9 +57,13 @@ layout: default
                 return hours * 60 + minutes + (seconds / 60);
             }
 
-            var currentTimeMinutes = timeToMinutes(currentTimeStr);
+            var currentTimeMinutes = timeToMinutes(currentTime);
             var postStartMinutes = timeToMinutes(postStart);
             var postEndMinutes = timeToMinutes(postEnd);
+
+            var isHappeningNow = (postDay === currentDay) && (currentTimeMinutes >= postStartMinutes && currentTimeMinutes <= postEndMinutes);
+
+            post.setAttribute('data-happening-now', isHappeningNow ? 'true' : 'false');
 
             var timeDifferenceStart = postStartMinutes - currentTimeMinutes;
             var timeDifferenceEnd = postEndMinutes - currentTimeMinutes;
@@ -85,6 +89,7 @@ layout: default
 
         list.innerHTML = '';
         items.forEach(item => list.appendChild(item));
+        var currentTimeMinutes = timeToMinutes(currentTime);
 
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.title;
@@ -93,13 +98,13 @@ layout: default
         posts.forEach(post => {
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
-                    if () {
+                    if (!post.getAttribute('data-happening-now')) {
                         post.style.display = 'none';
                     } else {
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if() {
+                    if(post.getAttribute('data-happening-now')) {
                         post.style.display = 'none';
                     } else {
                         posted++;
