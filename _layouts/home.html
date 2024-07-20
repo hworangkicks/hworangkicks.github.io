@@ -133,7 +133,7 @@ layout: default
                         post.style.display = 'none';
                     } else {
                         if (happeningNow) {
-                            post.querySelector('h2').innerHTML += ' <span title="happening now">🔥</span>';
+                            post.querySelector('h2').innerHTML += ' <span class="happening-now" title="happening now">🔥</span>';
                         }
 
                         titles.add(postTitle);
@@ -171,5 +171,33 @@ layout: default
     window.addEventListener("popstate", filterPosts);
     window.addEventListener("hashchange", filterPosts);
 </script>
+
+<style>
+    .happening-now {
+        position: relative;
+        cursor: pointer;
+    }
+
+    .happening-now::after {
+        content: "Happening now";
+        position: absolute;
+        white-space: nowrap;
+        background-color: #333;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        top: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+        z-index: 100;
+    }
+
+    .happening-now:hover::after {
+        opacity: 1;
+    }
+</style>
 
 {% include site-footer.html %}
