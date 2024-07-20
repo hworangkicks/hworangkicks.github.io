@@ -17,7 +17,7 @@ layout: default
 
     <ul class="list  list--posts">
     {% for page in site.posts limit: 10 %}
-      <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-recurring="{{ page.recurring }}">
+      <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-end="{{ page.end }}" data-recurring="{{ page.recurring }}">
         <article class="article  article--post  typeset">
 
           <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
@@ -43,13 +43,22 @@ layout: default
             let [hours2, minutes2] = timeStr2.split(':').map(Number);
 
             if (hours1 < hours2 || (hours1 === hours2 && minutes1 < minutes2)) {
-                return -1;
+                return -1; // left > right
             } else if (hours1 > hours2 || (hours1 === hours2 && minutes1 > minutes2)) {
-                return 1;
+                return 1; // right > left
             } else {
                 return 0;
             }
         }
+
+        function getCurrentTimeString() {
+          const now = new Date();
+          const hours = String(now.getHours()).padStart(2, '0');
+          const minutes = String(now.getMinutes()).padStart(2, '0');
+          const seconds = String(now.getSeconds()).padStart(2, '0');
+          
+          return `${hours}:${minutes}:${seconds}`;
+      }
 
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const now = new Date();
@@ -80,13 +89,16 @@ layout: default
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.title;
         var posted = 0;
+        const currTime = getCurrentTimeString();
 
         posts.forEach(post => {
             const postDay = post.getAttribute('data-day');
-            const recurring = post.getAttribute('data-recurring')
+            const recurring = post.getAttribute('data-recurring');
+            const postStart = post.getAttribute('data-start');
+            const postEnd = post.getAttribute('data-end');
 
             if (recurring == "true") {
-	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay) {
+	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay && compareTimes(postStart, currTime) <= 0 && compareTimes(postEnd, currTime) >= 0) {
 	                post.style.display = 'none';
 	            }
 	            else if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
