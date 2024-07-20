@@ -17,7 +17,7 @@ layout: default
 
     <ul class="list  list--posts">
     {% for page in site.posts limit: 10 %}
-      <li class="item  item--post" data-day="{{ page.day }}" data-recurring="{{ page.recurring }}">
+      <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-recurring="{{ page.recurring }}">
         <article class="article  article--post  typeset">
 
           <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
@@ -38,6 +38,19 @@ layout: default
             return (index2 - index1 + 7) % 7; // Calculate distance considering wrap-around
         }
 
+        function compareTimes(timeStr1, timeStr2) {
+            let [hours1, minutes1] = timeStr1.split(':').map(Number);
+            let [hours2, minutes2] = timeStr2.split(':').map(Number);
+
+            if (hours1 < hours2 || (hours1 === hours2 && minutes1 < minutes2)) {
+                return -1;
+            } else if (hours1 > hours2 || (hours1 === hours2 && minutes1 > minutes2)) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const now = new Date();
         const currentDay = days[now.getDay()];
@@ -48,11 +61,13 @@ layout: default
         items.sort((a, b) => {
           const dayA = a.getAttribute('data-day');
           const dayB = b.getAttribute('data-day');
+          const timeA = a.getAttribute('data-start');
+          const timeB = b.getAttribute('data-start');
           
           const distanceA = getDistance(currentDay, dayA);
           const distanceB = getDistance(currentDay, dayB);
           
-          return distanceA - distanceB;
+          return distanceA - distanceB if ((distanceA - distanceB) != 0) else compareTimes(timeA, timeB);
       });
 
         list.innerHTML = '';
