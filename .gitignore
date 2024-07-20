@@ -4,3 +4,39 @@ _site/
 garth-jekyll-theme-*.gem
 Gemfile.lock
 **/Gemfile.lock
+
+# macOS
+.DS_Store
+
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Dependency directories
+jspm_packages/
+typings/
+
+# Build directories
+dist/
+build/
+
+# Environment variables
+.env
+
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-metadata
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# VS Code
+.vscode/
+
+# Temporary files
