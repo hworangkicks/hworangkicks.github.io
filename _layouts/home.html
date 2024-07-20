@@ -172,14 +172,19 @@ layout: default
     window.addEventListener("hashchange", filterPosts);
 
     document.addEventListener('DOMContentLoaded', function () {
-    var elements = document.querySelectorAll('.happening-now');
-    
-    elements.forEach(function (element) {
-        element.addEventListener('click', function () {
-            this.classList.toggle('active');
+        var elements = document.querySelectorAll('.happening-now');
+
+        elements.forEach(function (element) {
+            element.addEventListener('click', function () {
+                elements.forEach(function (el) {
+                    if (el !== element) {
+                        el.classList.remove('active');
+                    }
+                });
+                this.classList.toggle('active');
+            });
         });
     });
-});
 </script>
 
 <style>
