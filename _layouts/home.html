@@ -73,7 +73,7 @@ layout: default
 
             // calculate distance from now
             if (happeningNow) {
-                return 0;
+                return -10080;
             } else {
                 // past
                 if ((distanceNow > distancePostEnd && distancePostStart <= distancePostEnd) || (distancePostStart > distancePostEnd && distanceNow > distancePostEnd && distanceNow < distancePostStart)) {
@@ -103,7 +103,7 @@ layout: default
         var posted = 0;
 
         posts.forEach(post => {
-            var happeningNow = distanceFromNow(post) == 0;
+            var happeningNow = distanceFromNow(post) == -10080;
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
