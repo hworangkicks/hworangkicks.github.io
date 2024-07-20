@@ -132,6 +132,10 @@ layout: default
                     if (postDay != currDay || titles.has(postTitle)) {
                         post.style.display = 'none';
                     } else {
+                        if (happeningNow) {
+                            post.querySelector('h2').innerHTML += ' <span title="happening now">🔥</span>';
+                        }
+
                         titles.add(postTitle);
                         posted++;
                     }
