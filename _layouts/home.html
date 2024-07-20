@@ -126,22 +126,22 @@ layout: default
             var happeningNow = isHappeningNow(post);
             var postTitle = post.getAttribute('data-title');
             var postDay = post.getAttribute('data-day');
-	    var postFromNow = distanceFromNow(post); 
+	    var postFromNow = distanceFromNow(post);
+	    var not_active = (postDay != currDay || postFromNow => 1440 || titles.has(postTitle))
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
-                    if (postDay != currDay || postFromNow => 1440 || titles.has(postTitle)) {
+                    if (not_active) {
                         post.style.display = 'none';
                     } else {
                         if (happeningNow) {
                             post.querySelector('h2').innerHTML += ' <span class="happening-now" title="happening now">🔥</span>';
                         }
-
                         titles.add(postTitle);
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(postDay == currDay || titles.has(postTitle)) {
+                    if(not_active == false || titles.has(postTitle) ) {
                         post.style.display = 'none';
                     } else {
                         titles.add(postTitle);
