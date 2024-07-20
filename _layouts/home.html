@@ -34,7 +34,7 @@ layout: default
     function filterPosts() {
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const now = new Date();
-        const currentDay = days[now.getDay()];
+        const currDay = days[now.getDay()];
         const currTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
         // We have current day (eg Sunday) and time (eg 17:45:00)
@@ -42,49 +42,52 @@ layout: default
         const list = document.querySelector('.list.list--posts');
         const items = Array.from(list.getElementsByTagName('li'));
 
-        function distanceFromNow(post) {
-            var minutesFromNow = 0;
+        function timeToMinutes(timeStr) {
+                var [hours, minutes, seconds] = timeStr.split(':').map(Number);
+                return hours * 60 + minutes;
+        }
 
-            var postDay = post.getAttribute('data-day');
+        function distanceFromNow(post) {
+            var postStartDay = post.getAttribute('data-day');
             var postStart = post.getAttribute('data-start');
             var postEnd = post.getAttribute('data-end');
+            var postEndDay = postStartDay;
+            var happeningNow = false;
 
-            var dayDifference = (days.indexOf(postDay) - days.indexOf(currentDay) + 7) % 7;
-            minutesFromNow += dayDifference * 24 * 60;
-
-            function timeToMinutes(timeStr) {
-                var [hours, minutes, seconds] = timeStr.split(':').map(Number);
-                return hours * 60 + minutes + (seconds / 60);
+            // if it goes to next day
+            if (postStart > postEnd) {
+                postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
             }
 
-            var currentTimeMinutes = timeToMinutes(currTime);
-            var postStartMinutes = timeToMinutes(postStart);
-            var postEndMinutes = timeToMinutes(postEnd);
+            // get distance from reference - Sunday 00:00:00
+            distanceNow = days.indexOf(currDay) * 24 * 60 + timeToMinutes(currTime);
+            distancePostStart = days.indexOf(postStartDay) * 24 * 60 + timeToMinutes(postStart);
+            distancePostEnd = days.indexOf(postEndDay) * 24 * 60 + timeToMinutes(postEnd);
 
-            var isHappeningNow = (postDay === currentDay) && (currentTimeMinutes >= postStartMinutes && currentTimeMinutes <= postEndMinutes);
+            // check if event is happening
+            if (distancePostStart <= distancePostEnd) {
+                happeningNow = distanceNow >= distancePostStart && distanceNow <= distancePostEnd;
+            } else {
+                happeningNow = distanceNow >= distancePostStart || distanceNow <= distancePostEnd;
+            }
 
-            post.setAttribute('data-happening-now', isHappeningNow ? 'true' : 'false');
-
-            var timeDifferenceStart = postStartMinutes - currentTimeMinutes;
-            var timeDifferenceEnd = postEndMinutes - currentTimeMinutes;
-
-            if (timeDifferenceStart > 0) {
-                minutesFromNow += timeDifferenceStart;
-                } else if (timeDifferenceEnd > 0) {
-                    minutesFromNow += timeDifferenceEnd;
+            // calculate distance from now
+            if (happeningNow) {
+                return 0;
+            } else {
+                // past
+                if (distancePostEnd < distanceNow) {
+                    return (10080 - distancePostNow) + distancePostStart;
                 } else {
-                // Event is already over
-                    minutesFromNow = 7 * 23 * 60 + (currentTimeMinutes - postEndMinutes);
-                 }
+                    //future
+                    return (distancePostStart - distanceNow);
+                }
+            }
 
-            return minutesFromNow;
         }
 
         items.sort((a, b) => {
-            distanceA = distanceFromNow(a);
-            distanceB = distanceFromNow(b);
-
-            return distanceA - distanceB;
+            distanceFromNow(a) - distanceFromNow(b);
       });
 
         list.innerHTML = '';
@@ -95,15 +98,17 @@ layout: default
         var posted = 0;
 
         posts.forEach(post => {
+            var happeningNow = distanceNow(post) == 0;
+
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
-                    if (!post.getAttribute('data-happening-now')) {
+                    if (!happeningNow) {
                         post.style.display = 'none';
                     } else {
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(post.getAttribute('data-happening-now')) {
+                    if(happeningNow) {
                         post.style.display = 'none';
                     } else {
                         posted++;
