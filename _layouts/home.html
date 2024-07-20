@@ -175,16 +175,26 @@ layout: default
         var elements = document.querySelectorAll('.happening-now');
 
         elements.forEach(function (element) {
-            element.addEventListener('click', function () {
-                this.classList.add('active');
+            var timeout;
 
-                // Remove the active class after 1 second
-                setTimeout(() => {
-                    this.classList.remove('active');
+            function activate() {
+                clearTimeout(timeout);
+                element.classList.add('active');
+                timeout = setTimeout(function () {
+                    element.classList.remove('active');
                 }, 1000);
+            }
+
+            element.addEventListener('click', activate);
+
+            // For mobile devices
+            element.addEventListener('touchstart', function (event) {
+                event.preventDefault(); // Prevents touchstart from firing click
+                activate();
             });
         });
     });
+
 </script>
 
 <style>
