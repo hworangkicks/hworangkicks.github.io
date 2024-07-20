@@ -43,9 +43,9 @@ layout: default
             let [hours2, minutes2] = timeStr2.split(':').map(Number);
 
             if (hours1 < hours2 || (hours1 === hours2 && minutes1 < minutes2)) {
-                return -1; // left > right
+                return -1; // left < right
             } else if (hours1 > hours2 || (hours1 === hours2 && minutes1 > minutes2)) {
-                return 1; // right > left
+                return 1; // left > right
             } else {
                 return 0;
             }
