@@ -80,7 +80,12 @@ layout: default
             // Convert the difference to minutes
             const minutesUntil = Math.floor(difference / 60000); // 1 minute = 60000 milliseconds
 
-            return minutesUntil;
+            if (minutesUntil >= 0) {
+                return minutesUntil;
+            }
+            else {
+                return minutesUntil + 7 * 24 * 60;
+            }
         }
 
         function checkActive(post) {
@@ -88,10 +93,6 @@ layout: default
             const recurring = post.getAttribute('data-recurring');
             const postStart = post.getAttribute('data-start');
             const postEnd = post.getAttribute('data-end');
-
-            console.log(postDay);
-            console.log(postStart);
-            console.log(postEnd);
 
             const currTime = getCurrentTimeString();
             var currTimeInMinutes = timeToMinutes(currTime);
@@ -107,10 +108,8 @@ layout: default
                 (spansMidnight 
                 ? (currTimeInMinutes < postStartInMinutes && currTimeInMinutes > postEndInMinutes) 
                 : (currTimeInMinutes < postStartInMinutes || currTimeInMinutes > postEndInMinutes))) {
-                console.log(false);
                 return false;
             }
-            console.log(true);
             return true;
 
         }
