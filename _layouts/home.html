@@ -171,32 +171,18 @@ layout: default
     window.addEventListener("popstate", filterPosts);
     window.addEventListener("hashchange", filterPosts);
 
-    // Function to handle the activation and deactivation of the label
-    function activate(event) {
-        event.preventDefault();
-        var element = event.currentTarget;
-        element.classList.add('active');
+    const elements = document.querySelectorAll('.hover-effect');
 
-        setTimeout(function () {
-            element.classList.remove('active');
-            location.reload(); // Refresh the page after removing the active class
-        }, 1000);
-    }
+    elements.forEach((element) => {
+      // Add touchstart event listener
+      element.addEventListener('touchstart', () => {
+        element.classList.add('touch-hover-effect');
+      });
 
-    // Select all .happening-now elements and add event listeners for click and touchstart
-    document.querySelectorAll('.happening-now').forEach(function(element) {
-        // Prevent touchstart from triggering click
-        let touchStartHandler = function(event) {
-            event.preventDefault();
-            activate(event);
-        };
-        
-        let clickHandler = function(event) {
-            activate(event);
-        };
-
-        element.addEventListener('touchstart', touchStartHandler);
-        element.addEventListener('click', clickHandler);
+      element.addEventListener('touchend', () => {
+        // Remove touch effect
+        element.classList.remove('touch-hover-effect');
+      });
     });
 
 
