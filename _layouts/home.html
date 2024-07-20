@@ -60,6 +60,38 @@ layout: default
           return `${hours}:${minutes}:${seconds}`;
       }
 
+        function timeToMinutes(time) {
+            var parts = time.split(':');
+            return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+        }
+
+        function checkActive(post) {
+            const postDay = post.getAttribute('data-day');
+            const recurring = post.getAttribute('data-recurring');
+            const postStart = post.getAttribute('data-start');
+            const postEnd = post.getAttribute('data-end');
+
+            const currTime = getCurrentTimeString();
+            var currTimeInMinutes = timeToMinutes(currTime);
+
+            // Convert post start and end times to minutes
+            var postStartInMinutes = timeToMinutes(postStart);
+            var postEndInMinutes = timeToMinutes(postEnd);
+
+            // Check if the event spans across midnight
+            var spansMidnight = postEndInMinutes < postStartInMinutes;
+
+            if (postDay !== currentDay || 
+                (spansMidnight 
+                ? (currTimeInMinutes < postStartInMinutes && currTimeInMinutes > postEndInMinutes) 
+                : (currTimeInMinutes < postStartInMinutes || currTimeInMinutes > postEndInMinutes))) {
+                return false;
+            }
+
+            return true;
+
+        }
+
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const now = new Date();
         const currentDay = days[now.getDay()];
@@ -89,25 +121,21 @@ layout: default
         const posts = document.querySelectorAll('.item--post');
         const collectionTitle = document.title;
         var posted = 0;
-        const currTime = getCurrentTimeString();
 
         posts.forEach(post => {
-            const postDay = post.getAttribute('data-day');
-            const recurring = post.getAttribute('data-recurring');
-            const postStart = post.getAttribute('data-start');
-            const postEnd = post.getAttribute('data-end');
-
             if (recurring == "true") {
-	            if (collectionTitle === "drinkcheap - drinkcheap" && (postDay !== currentDay || (compareTimes(postStart, currTime) > 0 || compareTimes(postEnd, currTime) < 0))) {
-	                post.style.display = 'none';
-	            }
-	            else if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
-                    post.style.display = 'none';
-	            }
-	            else {
-	            	posted++;
-	            }
-	         }
+                if (collectionTitle === "drinkcheap - drinkcheap") {
+                    if (!checkActive(post)) {
+                        post.style.display = 'none';
+                    }
+                } else if (collectionTitle == "upcoming - drinkcheap") {
+                    if(checkActive(post)) {
+                        post.style.display = 'none';
+                    }
+                } else {
+                    posted++;
+                }
+            }
         });
 
         if (posted == 0) {
