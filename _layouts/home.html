@@ -98,7 +98,7 @@ layout: default
             const postEnd = post.getAttribute('data-end');
 
             if (recurring == "true") {
-	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay && compareTimes(postStart, currTime) <= 0 && compareTimes(postEnd, currTime) >= 0) {
+	            if (collectionTitle === "drinkcheap - drinkcheap" && postDay !== currentDay && (compareTimes(postStart, currTime) > 0 || compareTimes(postEnd, currTime) < 0)) {
 	                post.style.display = 'none';
 	            }
 	            else if (collectionTitle == "upcoming - drinkcheap" && postDay == currentDay) {
