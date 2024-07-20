@@ -51,13 +51,14 @@ layout: default
             var postStartDay = post.getAttribute('data-day');
             var postStart = post.getAttribute('data-start');
             var postEnd = post.getAttribute('data-end');
-            var postEndDay = postStartDay;
             var postTitle = post.getAttribute('data-title');
             var happeningNow = false;
 
             // if it goes to next day
             if (postStart > postEnd) {
-                postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
+                var postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
+            } else {
+                var postEndDay = postStartDay;
             }
 
             console.log(postTitle);
