@@ -60,6 +60,10 @@ layout: default
                 postEndDay = days[(1 + days.indexOf(postStartDay)) % 7]
             }
 
+            console.log(postTitle);
+            console.log(postStartDay);
+            console.log(postEndDay);
+
             // get distance from reference - Sunday 00:00:00
             distanceNow = days.indexOf(currDay) * 24 * 60 + timeToMinutes(currTime);
             distancePostStart = days.indexOf(postStartDay) * 24 * 60 + timeToMinutes(postStart);
@@ -133,8 +137,6 @@ layout: default
 
         posts.forEach(post => {
             var happeningNow = isHappeningNow(post);
-            console.log(post.getAttribute('data-title'));
-            console.log(happeningNow)
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
