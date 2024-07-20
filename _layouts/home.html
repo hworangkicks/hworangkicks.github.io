@@ -171,17 +171,17 @@ layout: default
     window.addEventListener("popstate", filterPosts);
     window.addEventListener("hashchange", filterPosts);
 
-    const elements = document.querySelectorAll('.hover-effect');
+    const elements = document.querySelectorAll('.happening-now');
 
     elements.forEach((element) => {
       // Add touchstart event listener
       element.addEventListener('touchstart', () => {
-        element.classList.add('touch-hover-effect');
+        element.classList.add('happening-now');
       });
 
       element.addEventListener('touchend', () => {
         // Remove touch effect
-        element.classList.remove('touch-hover-effect');
+        element.classList.remove('happening-now');
       });
     });
 
