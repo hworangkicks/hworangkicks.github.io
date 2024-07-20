@@ -66,8 +66,12 @@ layout: default
           
           const distanceA = getDistance(currentDay, dayA);
           const distanceB = getDistance(currentDay, dayB);
-          
-          return distanceA - distanceB if ((distanceA - distanceB) != 0) else compareTimes(timeA, timeB);
+
+          if ((distanceA - distanceB) != 0) {
+            return distanceA - distanceB;
+          }
+
+          return compareTimes(timeA, timeB);
       });
 
         list.innerHTML = '';
