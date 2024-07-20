@@ -75,6 +75,9 @@ body {
   margin: 0 1rem;
 }
 
+.article--post {
+  text-align: center; // Center text in the article
+}
 
 // Main content
 .main {
@@ -82,7 +85,6 @@ body {
   @include flex-direction(column);
   @include flex(1, 0, auto);
   margin-bottom: 1.6rem;
-  text-align: center;
   @include breakpoint(break-1) {
     @include flex-direction(row);
   }
