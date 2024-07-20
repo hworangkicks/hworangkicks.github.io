@@ -234,9 +234,9 @@ a {
   }
 
   // Italic.
-  em, i, .italic {
-    font-style: map-get($bodytype, italic);
-  }
+  // em, i, .italic {
+    // font-style: map-get($bodytype, italic);
+  // }
 
   // Caption and inline small text.
   small, .caption {
