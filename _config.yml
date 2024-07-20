@@ -22,6 +22,7 @@ exclude:
 # 2. Installed Gems
 plugins:
 - jekyll-paginate
+- jekyll-seo-tag
 
 # 3. Gem settings
 # paginate: 2 # jekyll-paginate > items per page
@@ -66,6 +67,6 @@ title: "drinkcheap" # Site name or title
 logo: "/assets/logo.svg" # Site logo
 favicon: "/logo.ico" # Uncomment to add custom favicon, or leave as is to use site logo
 description: "montreal's best drink deals" # Site description and default description
-url: "https://drinkcheap.github.io" # Site url
+url: "https://www.drinkcheap.ca" # Site url
 baseurl: ""
 lang: en-US
