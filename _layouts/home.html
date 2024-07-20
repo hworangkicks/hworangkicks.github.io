@@ -127,7 +127,7 @@ layout: default
             var postTitle = post.getAttribute('data-title');
             var postDay = post.getAttribute('data-day');
 	    var postFromNow = distanceFromNow(post);
-	    var not_active = (postDay != currDay || postFromNow > 1440 || titles.has(postTitle))
+	    var not_active = (postDay != currDay || postFromNow > 1440)
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
@@ -141,7 +141,7 @@ layout: default
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(not_active == false && titles.has(postTitle) ) {
+                    if(not_active == false || titles.has(postTitle) ) {
                         post.style.display = 'none';
                     } else {
                         titles.add(postTitle);
