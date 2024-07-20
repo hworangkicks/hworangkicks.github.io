@@ -71,6 +71,9 @@ layout: default
                 happeningNow = distanceNow >= distancePostStart || distanceNow <= distancePostEnd;
             }
 
+            console.log(post.getAttribute('data-title'));
+            console.log(happeningNow);
+
             // calculate distance from now
             if (happeningNow) {
                 return -10080;
