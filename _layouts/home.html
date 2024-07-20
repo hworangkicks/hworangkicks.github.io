@@ -16,7 +16,7 @@ layout: default
     </article>
 
     <ul class="list  list--posts">
-    {% for page in site.posts limit: 10 %}
+    {% for page in site.posts %}
       <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-end="{{ page.end }}" data-recurring="{{ page.recurring }}">
         <article class="article  article--post  typeset">
 
