@@ -4,6 +4,7 @@ recurring: true
 day: "Thursday"
 start: "16:00:00"
 end: "18:00:00"
+area: "Hochelaga"
 ---
 
 Tuesday to Saturday. 4pm to 6pm.<br>

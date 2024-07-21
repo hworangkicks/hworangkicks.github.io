@@ -20,7 +20,7 @@ layout: default
       <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-end="{{ page.end }}" data-recurring="{{ page.recurring }}" data-title="{{ page.title }}">
         <article class="article  article--post  typeset">
 
-          <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2><span class="tag">Downtown</span>
+          <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2><span class="tag">{{ page.area }}</span>
           {{ page.excerpt | markdownify | truncatewords: 60 }}
 
         </article>

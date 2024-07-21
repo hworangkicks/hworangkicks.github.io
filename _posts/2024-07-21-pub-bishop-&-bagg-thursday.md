@@ -4,6 +4,7 @@ recurring: true
 day: "Thursday"
 start: "17:00:00"
 end: "19:00:00"
+area: "Mile End"
 ---
 
 Monday to Friday. 5pm to 7pm.<br>$7 draft pints, wine, and ciders.<br>52 Rue Saint-Viateur O, Montréal, QC H2T 2K8

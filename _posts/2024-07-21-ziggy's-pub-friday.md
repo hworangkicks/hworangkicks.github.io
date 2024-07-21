@@ -4,6 +4,7 @@ recurring: true
 day: "Friday"
 start: "16:00:00"
 end: "20:00:00"
+area: "Downtown"
 ---
 
 Monday to Friday. 4pm to 8pm.<br>7$ beer and select cocktails.<br>1470 Crescent St, Montreal, Quebec H3G 2B6

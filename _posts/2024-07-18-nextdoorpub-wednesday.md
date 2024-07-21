@@ -4,6 +4,7 @@ recurring: true
 day: "Wednesday"
 start: "17:00:00"
 end: "03:00:00"
+area: "Notre-Dame-de-Grâce"
 ---
 
 Wednesday. 5pm to 3am.<br>

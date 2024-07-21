@@ -4,6 +4,7 @@ recurring: true
 day: "Monday"
 start: "15:00:00"
 end: "19:00:00"
+area: "Downtown"
 ---
 
 Everyday. 3pm to 7pm.<br>7$ house beer and 8$ rail drinks (whiskey soda, rum & coke, etc.)<br>20 Prince Arthur St W, Montreal, Quebec H2X 1S3

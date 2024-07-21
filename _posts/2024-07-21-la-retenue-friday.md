@@ -4,6 +4,7 @@ recurring: true
 day: "Friday"
 start: "18:00:00"
 end: "22:00:00"
+area: "Côte-des-Neiges"
 ---
 
 Friday. 6pm to 10pm.<br>3.75$ Jagermeister Shots<br>5615A Chem. de la Côte-des-Neiges, Montréal, QC H3T 1Y8

@@ -4,6 +4,7 @@ recurring: true
 day: "Friday"
 start: "11:30:00"
 end: "15:00:00"
+area: "Downtown"
 ---
 
 Everyday. 11:30am to 3pm.<br>$5 Lunch special - mostly deep fried food stuff.<br>1817 Saint-Catherine St W, Montreal, Quebec H3H 1M2

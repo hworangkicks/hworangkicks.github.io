@@ -4,6 +4,7 @@ recurring: true
 day: "Monday"
 start: "16:00:00"
 end: "20:00:00"
+area: "Downtown"
 ---
 
 Monday to Friday. 4pm to 8pm.<br>$5 house beers and mixed drinks.<br>1426 Bishop St, Montreal, Quebec H3G 2E6

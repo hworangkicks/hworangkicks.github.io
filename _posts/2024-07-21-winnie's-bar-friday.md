@@ -4,6 +4,7 @@ recurring: true
 day: "Friday"
 start: "17:00:00"
 end: "19:00:00"
+area: "Downtown"
 ---
 
 Everyday. 5pm to 7pm.<br>1 for 1 on cocktails and beer<br>1455 Crescent St, Montreal, Quebec H3G 2B2

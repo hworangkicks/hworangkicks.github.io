@@ -4,6 +4,7 @@ recurring: true
 day: "Wednesday"
 start: "16:00:00"
 end: "19:00:00"
+area: "Old Port"
 ---
 
 Everyday. 4pm to 7pm.<br>$7 beers, rosé and select cocktails.<br>410 Rue Saint-Pierre, Montréal, QC H2Y 1Y3

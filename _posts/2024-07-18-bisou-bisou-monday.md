@@ -4,6 +4,7 @@ recurring: true
 day: "Monday"
 start: "16:00:00"
 end: "18:00:00"
+area: "Old Port"
 ---
 
 Monday to Friday. 4pm to 6pm.<br>

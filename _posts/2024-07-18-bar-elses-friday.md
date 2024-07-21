@@ -4,6 +4,7 @@ recurring: true
 day: "Friday"
 start: "17:00:00"
 end: "19:00:00"
+area: "Plateau-Mont-Royal"
 ---
 
 Everyday. 5pm to 7pm.<br>

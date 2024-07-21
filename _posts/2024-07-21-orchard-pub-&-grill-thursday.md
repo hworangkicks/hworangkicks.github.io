@@ -4,6 +4,7 @@ recurring: true
 day: "Thursday"
 start: "16:00:00"
 end: "19:00:00"
+area: "Monkland Village"
 ---
 
 Monday to Friday. 4pm to 7pm.<br>8$ beer and house wine.<br>5563 Monkland Ave, Montreal, Quebec H4A 1E1

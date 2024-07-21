@@ -4,6 +4,7 @@ recurring: true
 day: "Thursday"
 start: "16:00:00"
 end: "22:00:00"
+area: "Saint-Henri"
 ---
 
 Every Thursday. 4pm to 10pm.<br>

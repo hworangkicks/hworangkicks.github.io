@@ -4,6 +4,7 @@ recurring: true
 day: "Tuesday"
 start: "16:00:00"
 end: "19:00:00"
+area: "Griffintown"
 ---
 
 Monday to Friday. 4pm to 7pm.<br>$7.50 for select cocktails including aperol spritz, wine, and beer.<br>265 Rue des Seigneurs, Montréal, QC H3J 0B3

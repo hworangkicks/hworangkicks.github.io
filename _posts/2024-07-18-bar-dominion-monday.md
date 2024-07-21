@@ -4,6 +4,7 @@ recurring: true
 day: "Monday"
 start: "23:00:00"
 end: "01:00:00"
+area: "Downtown"
 ---
 
 Everyday. 11pm to 1am.<br>

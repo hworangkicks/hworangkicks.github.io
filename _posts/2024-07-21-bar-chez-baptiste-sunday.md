@@ -4,6 +4,7 @@ recurring: true
 day: "Sunday"
 start: "12:00:00"
 end: "19:00:00"
+area: "Plateau-Mont-Royal"
 ---
 
 Saturday and Sunday. 12pm to 7pm.<br>7$ red beer and blonde beer.<br>1045 Mont-Royal Ave E, Montreal, Quebec H2J 1X7

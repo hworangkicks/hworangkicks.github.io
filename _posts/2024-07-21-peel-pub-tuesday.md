@@ -4,6 +4,7 @@ recurring: true
 day: "Tuesday"
 start: "17:00:00"
 end: "19:00:00"
+area: "Downtown"
 ---
 
 Every Tuesday. 5pm to 7pm.<br>18$ pitcher, 6$ rail drinks (rum & coke, gin & tonic, etc.)<br>1196 Peel St, Montreal, Quebec H3B 2T6

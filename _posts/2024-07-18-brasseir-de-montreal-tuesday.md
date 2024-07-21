@@ -4,6 +4,7 @@ recurring: true
 day: "Tuesday"
 start: "15:00:00"
 end: "19:00:00"
+area: "Griffintown"
 ---
 
 Monday to Friday. 3pm to 7pm.<br>

@@ -4,6 +4,7 @@ recurring: true
 day: "Friday"
 start: "21:00:00"
 end: "23:00:00"
+area: "Downtown"
 ---
 
 Everyday. 9pm to 11pm.<br>10$ meals, 4.50$ beer, 30$ corona bucket<br>2051 Saint-Catherine St W, Montreal, Quebec H3H 1M6

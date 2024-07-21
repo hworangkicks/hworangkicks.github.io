@@ -4,6 +4,7 @@ recurring: true
 day: "Monday"
 start: "16:00:00"
 end: "19:00:00"
+area: "Plateau-Mont-Royal"
 ---
 
 Monday to Friday. 4pm to 7pm.<br>6$ beers, 4$ rail drinks (gin & tonic, vodka soda, etc.)<br>3575 Av du Parc #4110, Montréal, QC H2X 3P9
