@@ -115,6 +115,7 @@ layout: default
 
         list.innerHTML = '';
         const titles = new Set();
+	const activePosts = new Set();
 
         items.forEach(item => list.appendChild(item));
 
@@ -122,25 +123,32 @@ layout: default
         const collectionTitle = document.title;
         var posted = 0;
 
+	posts.forEach(post => {
+		var postDay = post.getAttribute('data-day');
+	        var postFromNow = distanceFromNow(post);
+	        var not_active = (postDay != currDay || postFromNow > 1440)
+		if (not_active == false) {
+		    activePosts.add(post.getAttribute('data-title'))
+		     }
+		 });
+
         posts.forEach(post => {
             var happeningNow = isHappeningNow(post);
             var postTitle = post.getAttribute('data-title');
-            var postDay = post.getAttribute('data-day');
 
             if (post.getAttribute('data-recurring') == "true") {
                 if (collectionTitle === "drinkcheap - drinkcheap") {
-                    if (postDay != currDay || titles.has(postTitle)) {
+                    if (activePosts.has(postTitle) == false || titles.has(postTitle)) {
                         post.style.display = 'none';
                     } else {
                         if (happeningNow) {
                             post.querySelector('h2').innerHTML += ' <span class="happening-now" title="happening now">🔥</span>';
                         }
-
                         titles.add(postTitle);
                         posted++;
                     }
                 } else if (collectionTitle == "upcoming - drinkcheap") {
-                    if(postDay == currDay || titles.has(postTitle)) {
+                    if(activePosts.has(postTitle) || titles.has(postTitle) ) {
                         post.style.display = 'none';
                     } else {
                         titles.add(postTitle);
