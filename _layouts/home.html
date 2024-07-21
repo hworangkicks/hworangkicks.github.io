@@ -20,7 +20,7 @@ layout: default
       <li class="item  item--post" data-day="{{ page.day }}" data-start="{{ page.start }}" data-end="{{ page.end }}" data-recurring="{{ page.recurring }}" data-title="{{ page.title }}">
         <article class="article  article--post  typeset">
 
-          <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
+          <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2><span class="tag">Downtown</span>
           {{ page.excerpt | markdownify | truncatewords: 60 }}
 
         </article>
@@ -205,6 +205,16 @@ layout: default
     .happening-now:hover::after {
         opacity: 1;
         transform: translateX(-50%) translateY(-5px);
+    }
+
+    .tag {
+        background-color: #ffdfdf;
+        color: #333;
+        padding: 2px 6px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-style: italic;
+        border: 1px solid #ddd;
     }
 </style>
 
