@@ -1,0 +1,56 @@
+# Global configuration for all sites
+title: DrinkCheap
+description: A platform for affordable drinks
+url: "https://drinkcheap.ca" # The base hostname & protocol for your site
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Default settings for each site
+defaults:
+  - scope:
+      path: "" # An empty string here means all files in the project
+    values:
+      layout: "default"
+      author: "DrinkCheap Team"
+
+# Include/Exclude files and directories
+include:
+  - _pages
+  - _posts
+  - assets
+exclude:
+  - node_modules
+  - vendor
+
+# Pagination settings
+paginate: 5
+paginate_path: "/page:num"
+
+# Collections (if any)
+collections:
+  my_collection:
+    output: true
+
+# Build settings
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+future: true
+lsi: false
+whitelist: ["jekyll-archives"]
+highlighter: "rouge"
+incremental: false
+
+# Configuration for subdirectory sites
+montreal:
+  baseurl: "/montreal"
+  title: "DrinkCheap Montreal"
+  description: "Discover cheap drinks in Montreal"
+  url: "https://drinkcheap.ca/montreal"
+
+toronto:
+  baseurl: "/toronto"
+  title: "DrinkCheap Toronto"
+  description: "Discover cheap drinks in Toronto"
+  url: "https://drinkcheap.ca/toronto"
