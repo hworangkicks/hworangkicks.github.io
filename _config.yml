@@ -1,56 +1,72 @@
-# Global configuration for all sites
-title: DrinkCheap
-description: A platform for affordable drinks
-url: "https://drinkcheap.ca" # The base hostname & protocol for your site
-markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
+# Site configuration
+# 1. Files excluded from Jekyll builds
+# 2. Installed Gems
+# 3. Gem settings
+# 4. Jekyll settings
+# 5. Collections
+# 6. Jekyll collections settings
+# 7. Site settings
 
-# Default settings for each site
-defaults:
-  - scope:
-      path: "" # An empty string here means all files in the project
-    values:
-      layout: "default"
-      author: "DrinkCheap Team"
-
-# Include/Exclude files and directories
-include:
-  - _pages
-  - _posts
-  - assets
+# 1. Files excluded from Jekyll builds
 exclude:
-  - node_modules
-  - vendor
+- README.md
+- CODE_OF_CONDUCT.md
+- CONTRIBUTING.md
+- screenshot.png
+- LICENSE
+- CNAME
+- Gemfile
+- Gemfile.lock
+- garth-jekyll-theme.gemspec
 
-# Pagination settings
-paginate: 5
-paginate_path: "/page:num"
+# 2. Installed Gems
+plugins:
+- jekyll-paginate
+- jekyll-seo-tag
 
-# Collections (if any)
+# 3. Gem settings
+# paginate: 2 # jekyll-paginate > items per page
+# paginate_path: page:num # jekyll-paginate > blog page
+
+# 4. Jekyll settings
+sass:
+  style: compressed # Style compression
+permalink: pretty  # Permalink style (/YYYY/MM/DD/page-name/)
+excerpt_separator: <!-- more --> # Marks end of excerpt in posts
+timezone: America/Toronto # Timezone for blog posts and alike
+
+# 5. Collections
 collections:
-  my_collection:
-    output: true
+  posts:
+    title: drinkcheap # Needed for Siteleaf
+    output: false
+    description: "montreal's best drink deals" # The post list page content
+  upcoming:
+    title: upcoming # Needed for Siteleaf
+    output: false
+    description: "montreal's best drink deals" # The post list page content
 
-# Build settings
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
-future: true
-lsi: false
-whitelist: ["jekyll-archives"]
-highlighter: "rouge"
-incremental: false
+# 6. Jekyll collections settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page # Default layout
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post # Default layout
 
-# Configuration for subdirectory sites
-montreal:
-  baseurl: "/montreal"
-  title: "DrinkCheap Montreal"
-  description: "Discover cheap drinks in Montreal"
-  url: "https://drinkcheap.ca/montreal"
-
-toronto:
-  baseurl: "/toronto"
-  title: "DrinkCheap Toronto"
-  description: "Discover cheap drinks in Toronto"
-  url: "https://drinkcheap.ca/toronto"
+# 7. Site settings
+encoding: utf-8 # Make sure the encoding is right
+title: "drinkcheap" # Site name or title
+logo: "/assets/logo.svg" # Site logo
+favicon: "/logo.ico" # Uncomment to add custom favicon, or leave as is to use site logo
+description: "montreal's best drink deals" # Site description and default description
+url: "https://www.drinkcheap.ca" # Site url
+baseurl: "/montreal"
+lang: en-US
