@@ -2,12 +2,12 @@
 title: Les Trois Monkeys
 recurring: true
 day: "Saturday"
-start: "11:00:00"
-end: "23:00:00"
+start: "10:00:00"
+end: "02:00:00"
 area: "Downtown"
 ---
 
-Everyday. 11am to 11pm.<br>$5 draft pints, $18 pitchers.<br>1455 Peel St, Montreal, Quebec H3A 1T5
+Everyday. 11am to 2am.<br>$5 draft pints, $18 pitchers.<br>1455 Peel St, Montreal, Quebec H3A 1T5
 
 <!-- more -->
 
