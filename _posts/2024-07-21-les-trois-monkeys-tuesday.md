@@ -7,7 +7,7 @@ end: "23:00:00"
 area: "Downtown"
 ---
 
-Everyday. 11am to 11pm.<br>$5 draft pints, $18 pitchers.<br>1455 Peel St, Montreal, Quebec H3A 1T5
+Monday to Wednesday. 11am to 11pm.<br>$5 draft pints, $18 pitchers.<br>1455 Peel St, Montreal, Quebec H3A 1T5
 
 <!-- more -->
 
